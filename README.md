@@ -269,3 +269,11 @@ activer des journaux de flux VPC pour fournir des informations sur les données 
 créer une connexion d'appairage ;
 analyser les journaux de flux VPC.
 
+
+
+Note :
+
+
+<img width="256" height="235" alt="image" src="https://github.com/user-attachments/assets/43d95cfa-5dd1-48de-ab6f-832954d19a1d" />
+
+
