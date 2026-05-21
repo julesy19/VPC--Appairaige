@@ -231,3 +231,41 @@ Sélectionnez Enregistrer.
 L'application doit maintenant afficher les données de la base de données.
 Cette étape confirme que la connexion d'appairage de VPC a été établie, car le VPC partagé ne dispose pas d'une passerelle Internet. Le seul moyen d'accéder à la base de données consiste à utiliser la connexion d'appairage de VPC.
 
+# Tâche 5 : analyse des journaux de flux VPC
+Dans le cadre de cette tâche, vous allez analyser les journaux de flux VPC pour comprendre le trafic entre l'application et la base de données des VPC appairés.
+Accédez à l'onglet ou à la fenêtre du navigateur qui affiche ShareVPCFlowLogs.
+Sélectionnez Log stream eni-**.
+Après quelques minutes, le trafic réseau commence à s'afficher.
+Notez le schéma du trafic dans les journaux, qui ressemble à ce qui suit :
+
+
+
+<----------------->
+
+
+
+
+<img width="558" height="221" alt="image" src="https://github.com/user-attachments/assets/d4bc5a73-3111-45c1-b97b-c93d2f24508d" />
+
+
+
+<------------------->
+
+
+
+<img width="516" height="294" alt="image" src="https://github.com/user-attachments/assets/239b2283-0cb0-4512-a05f-1d1d94a12598" />
+
+
+
+<------------------->
+
+
+
+# Conclusion
+Félicitations ! Vous avez terminé avec succès les étapes suivantes :
+créer une connexion d'appairage de VPC ;  
+configurer des tables de routage pour utiliser la connexion d'appairage de VPC ;
+activer des journaux de flux VPC pour fournir des informations sur les données circulant sur le réseau ;
+créer une connexion d'appairage ;
+analyser les journaux de flux VPC.
+
