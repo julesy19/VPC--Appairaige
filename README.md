@@ -144,16 +144,90 @@ Vous allez maintenant configurer le flux inverse pour le trafic provenant du VPC
 
 
 
+Les tables de routage sont maintenant configurées pour envoyer le trafic par le biais de la connexion d'appairage lorsque le trafic est destiné à l'autre VPC.
+
+
 
 <----------------->
 
+# Tâche 3 : activation des journaux de flux VPC pour fournir des informations sur les données circulant sur le réseau
+
+Maintenant que la connexion d'appairage est établie entre les deux VPC, vous allez configurer les journaux de flux VPC pour surveiller le trafic réseau entre ces deux réseaux. Dans cet atelier, vous allez configurer des journaux de flux VPC pour surveiller le trafic sur la base de données d'hébergement du VPC.
+
+Dans le volet de navigation de gauche, choisissez Vos VPC, puis sélectionnez Shared VPC (VPC partagé).
+Dans le panneau inférieur, choisissez l'onglet Journaux de flux.
+Choisissez Créer un journal de flux.
+Sur la page Créer un journal de flux, configurez les paramètres suivants :
+Name - optional (Nom – facultatif) : SharedVPCLogs
+Intervalle d'agrégation maximal : 1 minute.
+Destination : Envoyer dans CloudWatch Logs.
+Groupe de journaux de destination : saisissez ShareVPCFlowLogs pour créer un groupe de journaux du même nom.
+Rôle IAM : choisissez vpc-flow-logs-Role.
+Choisissez Créer un journal de flux.
+Une alerte s'affiche en haut pour indiquer que le journal de flux a été créé pour le VPC partagé.
+Dans le volet inférieur, choisissez l'onglet Journaux de flux et notez que SharedVPCLogs a été créé.
+Sous Nom de destination, choisissez l'hyperlien ShareVPCFlowLogs pour afficher le groupe de journaux CloudWatch qui a été créé.
+Remarque : actualisez la page après quelques minutes si vous recevez le message Log group does not exist (Le groupe de journaux n'existe pas).
+Gardez cette fenêtre ouverte.
+
+
+
+<img width="783" height="321" alt="image" src="https://github.com/user-attachments/assets/c2dfde53-a3c3-4221-9b9b-aa2966a9d7ce" />
+
+
+
+<--------------------->
+
+
+
+<img width="863" height="333" alt="image" src="https://github.com/user-attachments/assets/df2c0e05-9375-45bf-9c1f-e567119fc53a" />
 
 
 
 
+<---------------------->
+
+
+
+<img width="820" height="322" alt="image" src="https://github.com/user-attachments/assets/1381172a-8f4c-452f-9b8c-5f8a4a7a209c" />
 
 
 
 
+<--------------------->
 
+
+
+# Tâche 4 : test de la connexion d'appairage de VPC
+Maintenant que vous avez configuré l'appairage de VPC, vous allez tester sa connexion. Pour ce faire, vous allez configurer l'application Inventory afin d'accéder à la base de données via la connexion d'appairage.
+En haut de ce guide, choisissez AWS Details (Détails AWS).
+Copiez la valeur d'EC2PublicIP et collez-la dans un nouvel onglet de navigateur web.
+L'application Inventory et le message Please configure settings to connect to database (Veuillez configurer les paramètres pour vous connecter à la base de données) devraient maintenant s'afficher. 
+Choisissez  Paramètres et configurez les paramètres suivants :
+Point de terminaison : collez le point de terminaison de la base de données. Pour trouver ce point de terminaison, choisissez AWS Details (Détails AWS) sur la page des instructions de l'atelier. Ensuite, copiez le point de terminaison.
+Base de données : inventory
+Nom d'utilisateur : admin
+Mot de passe : lab-password
+Sélectionnez Enregistrer.
+
+
+
+<--------------->
+
+
+<img width="677" height="338" alt="image" src="https://github.com/user-attachments/assets/e669ebdc-0cc6-479c-9867-1b28162b7121" />
+
+
+
+
+<---------------->
+
+
+
+<img width="698" height="383" alt="image" src="https://github.com/user-attachments/assets/9f8772d5-f263-4a9e-935e-b9ae0dc79fba" />
+
+
+
+L'application doit maintenant afficher les données de la base de données.
+Cette étape confirme que la connexion d'appairage de VPC a été établie, car le VPC partagé ne dispose pas d'une passerelle Internet. Le seul moyen d'accéder à la base de données consiste à utiliser la connexion d'appairage de VPC.
 
